@@ -1,0 +1,15 @@
+Instruction to configure and run the application.
+
+1. Open the inHealthTechnicalExam.sln using Microsoft Visual Studio 2019.
+2. On Solution Explorer double click on Startup.cs file.
+3. Look for the ConfigureServices method.
+4. Under ConfigureServices method look for connection variable.
+5. Change the LAPTOP-VFPDU88O\SQLEXPRESS to your local server.
+6. Go to Package Manager Console then type add-migration initialcreate.
+7. Wait for the Migrations folder to be added on the Solution.
+8. Go back to Package Manager Console then type update-database.
+9. Wait for the BlogDB database to be added on your local server.
+
+You can now run the application.
+		
+

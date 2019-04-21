@@ -1,0 +1,47 @@
+﻿@model List<inHealthTechnicalExam.DataAccessLayer.Models.ViewModels.UserAccessRoleViewModel>
+
+<h1>Index</h1>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Username")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Name")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Roles")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Action")
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Roles)
+                        </td>
+                        <td>
+                            <a asp-action="GiveAdminAccess" asp-route-id="@item.ID">Grant Admin Access</a>
+                            <span>-</span>
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

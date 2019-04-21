@@ -1,0 +1,51 @@
+﻿@model inHealthTechnicalExam.DataAccessLayer.Models.Comment
+
+@{
+    var title = "";
+    foreach (var item in ViewBag.BlogID)
+    {
+        title = item.Text;
+    }
+}
+
+<h1>Comment</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-antiforgery="true">
+            <div asp-validation-summary="@ValidationSummary.ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label" for="Title">Title</label>
+                <input class="form-control" type="text" value="@title" disabled="disabled">
+                <span asp-validation="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="listComments">Comments</label>
+                @if (Enumerable.Count(ViewBag.listComments) == 0)
+                {
+                    <p style="text-indent:10px;border-style:solid;border-width: 1px;border-left-width: 1px;border-right-width: 1px;border-color: grey;">No comments yet.</p>
+                }
+                else
+                {
+                    @foreach (var item in ViewBag.listComments)
+                    {
+                        <p style="text-indent:10px;border-style:solid;border-width: 1px;border-left-width: 1px;border-right-width: 1px;border-color: grey;">@item.Remarks</p>
+                    }
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="Remarks" class="control-label"></label>
+                <input asp-for="Remarks" class="form-control" />
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
